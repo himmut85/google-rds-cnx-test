@@ -7,10 +7,10 @@ import (
 )
 
 func main() {
-	dbHostName := ""
-	dbUserName := ""
-	dbUserPass := ""
-	dbName := ""
+	dbHostName := "34.140.158.202"
+	dbUserName := "postgres"
+	dbUserPass := "Test123"
+	dbName := "postgres"
 	dbPort := "5432"
 	dbSslMode := "disable"
 	dbTimeZone := "UTC"
