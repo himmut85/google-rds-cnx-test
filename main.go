@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	dbHostName := "34.140.158.202"
+	dbHostName := "34.140.158.2021"
 	dbUserName := "postgres"
 	dbUserPass := "Test123"
 	dbName := "postgres"
