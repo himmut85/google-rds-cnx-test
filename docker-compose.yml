@@ -1,0 +1,10 @@
+version: "2"
+
+services:
+  backend:
+    image: backendapp:test
+    ports:
+      - '8080:8080'
+    build:
+      dockerfile: Dockerfile
+      context: .
