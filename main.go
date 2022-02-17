@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
-	"log"
-        "net/http"
-        "os"
+	//"log"
+        //"net/http"
+        //"os"
 )
 
 func main() {
@@ -28,10 +28,12 @@ func main() {
 
 	fmt.Println(db)
 	
+	/*
 	port := os.Getenv("PORT")
   	if port == "" {
         	port = "8080"
 	}	
 	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", port), nil))
+	*/
 
 }
