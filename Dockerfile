@@ -10,5 +10,5 @@ WORKDIR /app
 RUN go mod tidy
 RUN go get ./...
 RUN go build -o main .
-#EXPOSE 8080
+EXPOSE 8080
 CMD ["/app/main"]
