@@ -6,6 +6,7 @@ ADD . /app
 ## Specify the working directory
 WORKDIR /app
 ## Build to compile the binary executable of our Go program
+## Build to compile the binary executable of our Go program
 
 RUN go mod tidy
 RUN go get ./...
