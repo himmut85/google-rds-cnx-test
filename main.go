@@ -46,7 +46,6 @@ package main
 
 import (
 
-	"gorm.io/gorm"
 	"database/sql"
 	"fmt"
 	"log"
