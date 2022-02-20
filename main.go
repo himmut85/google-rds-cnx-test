@@ -54,29 +54,38 @@ import (
 	_ "github.com/denisenkom/go-mssqldb"
 )
 
-var (
-	server   = "10.132.0.4312"
-	port     = "1432"
-	user     = "testuser"
-	password = "test123"
-	
-)
+
 
 func main() {
 	
-	
-	
-	
-	connString := fmt.Sprintf("server=%s;user=%s;password=%s;port=%s",
-		server, user, password, port)
+	var n_tables int
 
-	conn, err := sql.Open("mssql", connString)
-	if err != nil {
-		log.Fatal("SQL Open connection failed:", err.Error())
-	}else {
-		fmt.Printf("sql Connected!\n")
-	}
-	defer conn.Close()
+   println (sql.Drivers())
+
+   // URL connection string formats
+   //    sqlserver://sa:mypass@localhost?database=master&connection+timeout=30         // username=sa, password=mypass.
+   //    sqlserver://sa:my%7Bpass@somehost?connection+timeout=30                       // password is "my{pass"
+   // note: pwd is "myP@55w0rd"
+   connectString := "sqlserver://SBM:myP%4055w0rd@VM17:1433?database=AE&connection+timeout=30"
+   println("Connection string=" , connectString )
+
+   println("open connection")
+   db, err := sql.Open("mssql", connectString)
+   defer db.Close()
+   println ("Open Error:" , err)
+   if err != nil {
+      log.Fatal(err)
+   }else {println ("SQL CONNECTED"}
+
+   println("count records in TS_TABLES & scan")
+   err = db.QueryRow("Select count(*) from ts_tables").Scan(&n_tables)
+   if err != nil {
+      log.Fatal(err)
+   }
+   println ("count of tables" , n_tables)
+
+   println("closing connection")
+   db.Close()
 	
 	
 	port := os.Getenv("PORT")
