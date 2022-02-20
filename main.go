@@ -66,7 +66,7 @@ func main() {
    //    sqlserver://sa:mypass@localhost?database=master&connection+timeout=30         // username=sa, password=mypass.
    //    sqlserver://sa:my%7Bpass@somehost?connection+timeout=30                       // password is "my{pass"
    // note: pwd is "myP@55w0rd"
-   connectString := "sqlserver://SBM:myP%4055w0rd@VM17:1433?database=AE&connection+timeout=30"
+   connectString := "sqlserver://testuser:test123@10.132.0.43:1433?database=TESTDB&connection+timeout=30"
    println("Connection string=" , connectString )
 
    println("open connection")
@@ -74,10 +74,11 @@ func main() {
    defer db.Close()
    println ("Open Error:" , err)
    if err != nil {
-      log.Fatal(err)
-   }else {println ("SQL CONNECTED")}
+     	 //log.Fatal(err)
+	panic("DB connection could not be established!")
+   }
 
-   println("count records in TS_TABLES & scan")
+   println("count records in testtable & scan")
    err = db.QueryRow("Select count(*) from ts_tables").Scan(&n_tables)
    if err != nil {
       log.Fatal(err)
