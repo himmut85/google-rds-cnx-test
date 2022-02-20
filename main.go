@@ -50,12 +50,12 @@ import (
 	"log"
         "net/http"
         "os"
-	_ "github.com/denisenkom/go-mssqldb"
+	import _ "github.com/go-sql-driver/mysql"
 )
 
 var (
 	server   = "10.132.0.4312"
-	port     = "1433"
+	port     = "1432"
 	user     = "testuser"
 	password = "test123"
 	
@@ -72,18 +72,11 @@ func main() {
 	conn, err := sql.Open("mssql", connString)
 	if err != nil {
 		log.Fatal("SQL Open connection failed:", err.Error())
+	}else {
+		fmt.Printf("sql Connected!\n")
 	}
-	fmt.Printf("sql Connected!\n")
 	defer conn.Close()
-	stmt, err := conn.Prepare("select @@version")
-	row := stmt.QueryRow()
-	var result string
-
-	err = row.Scan(&result)
-	if err != nil {
-		log.Fatal("Scan failed:", err.Error())
-	}
-	fmt.Printf("%s\n", result)
+	
 	
 	port := os.Getenv("PORT")
   	if port == "" {
