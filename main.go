@@ -46,7 +46,8 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
-
+        "net/http"
+        "os"
 	_ "github.com/denisenkom/go-mssqldb"
 )
 
@@ -54,7 +55,7 @@ var (
 	server   = "10.132.0.43"
 	port     = 1433
 	user     = "testuser"
-	password = "test123"
+	password = "test1231"
 )
 
 func main() {
@@ -63,9 +64,9 @@ func main() {
 
 	conn, err := sql.Open("mssql", connString)
 	if err != nil {
-		log.Fatal("Open connection failed:", err.Error())
+		log.Fatal("SQL Open connection failed:", err.Error())
 	}
-	fmt.Printf("Connected!\n")
+	fmt.Printf("sql Connected!\n")
 	defer conn.Close()
 	stmt, err := conn.Prepare("select @@version")
 	row := stmt.QueryRow()
@@ -76,4 +77,10 @@ func main() {
 		log.Fatal("Scan failed:", err.Error())
 	}
 	fmt.Printf("%s\n", result)
+	
+	port := os.Getenv("PORT")
+  	if port == "" {
+        	port = "8080"
+	}	
+	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", port), nil))
 }
