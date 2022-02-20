@@ -58,12 +58,12 @@ import (
 func main() {
 	
 	server   = "10.132.0.43"
-	port     = 1433
+	port     = "1433"
 	user     = "testuser"
 	password = "test1231"
 	
 	
-	connString := fmt.Sprintf("server=%s;user id=%s;password=%s;port=%d",
+	connString := fmt.Sprintf("server=%s;user=%s;password=%s;port=%s",
 		server, user, password, port)
 
 	conn, err := sql.Open("mssql", connString)
