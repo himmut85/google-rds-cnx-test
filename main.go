@@ -52,7 +52,7 @@ import (
 )
 
 var (
-	server   = "10.132.0.43"
+	server   = "10.132.0.431"
 	port     = 1433
 	user     = "testuser"
 	password = "test1231"
