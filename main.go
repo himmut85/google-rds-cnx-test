@@ -75,7 +75,7 @@ func main() {
    println ("Open Error:" , err)
    if err != nil {
       log.Fatal(err)
-   }else {println ("SQL CONNECTED"}
+   }else {println ("SQL CONNECTED")}
 
    println("count records in TS_TABLES & scan")
    err = db.QueryRow("Select count(*) from ts_tables").Scan(&n_tables)
