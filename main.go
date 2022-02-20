@@ -52,15 +52,13 @@ import (
 )
 
 
-	
-
 
 func main() {
 	
-	server   = "10.132.0.43"
-	port     = "1433"
-	user     = "testuser"
-	password = "test1231"
+	server   := "10.132.0.431"
+	port     := "1433"
+	user     := "testuser"
+	password := "test123"
 	
 	
 	connString := fmt.Sprintf("server=%s;user=%s;password=%s;port=%s",
