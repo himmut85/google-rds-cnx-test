@@ -66,7 +66,7 @@ func main() {
    //    sqlserver://sa:mypass@localhost?database=master&connection+timeout=30         // username=sa, password=mypass.
    //    sqlserver://sa:my%7Bpass@somehost?connection+timeout=30                       // password is "my{pass"
    // note: pwd is "myP@55w0rd"
-   connectString := "sqlserver://testuser:test123@10.132.0.43:1433?database=TESTDB&connection+timeout=30"
+   connectString := "sqlserver://testuser:test123@10.132.0.43:1433?database=TESTDB&connection+timeout=30&encrypt=disable"
    println("Connection string=" , connectString )
 
    println("open connection")
