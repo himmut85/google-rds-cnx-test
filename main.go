@@ -45,13 +45,14 @@ func main() {
 package main
 
 import (
-	"gorm.io/driver/postgres"
+
 	"gorm.io/gorm"
 	"database/sql"
 	"fmt"
 	"log"
         "net/http"
         "os"
+	_ "github.com/denisenkom/go-mssqldb"
 )
 
 var (
