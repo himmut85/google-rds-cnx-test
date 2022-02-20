@@ -1,4 +1,4 @@
-/* package main
+package main
 
 import (
 	"fmt"
@@ -38,60 +38,4 @@ func main() {
 	
 
 }
-*/
 
-
-
-package main
-
-import (
-
-	"database/sql"
-	"fmt"
-	"log"
-        "net/http"
-        "os"
-	_ "github.com/denisenkom/go-mssqldb"
-)
-
-
-
-func main() {
-	
-	var n_tables int
-
-   println (sql.Drivers())
-
-   // URL connection string formats
-   //    sqlserver://sa:mypass@localhost?database=master&connection+timeout=30         // username=sa, password=mypass.
-   //    sqlserver://sa:my%7Bpass@somehost?connection+timeout=30                       // password is "my{pass"
-   // note: pwd is "myP@55w0rd"
-   connectString := "sqlserver://testuser:test123@10.132.0.43:1433?database=TESTDB&connection+timeout=30&encrypt=disable"
-   println("Connection string=" , connectString )
-
-   println("open connection")
-   db, err := sql.Open("mssql", connectString)
-   defer db.Close()
-   println ("Open Error:" , err)
-   if err != nil {
-     	 //log.Fatal(err)
-	panic("DB connection could not be established!")
-   }
-
-   println("count records in testtable & scan")
-   err = db.QueryRow("Select count(*) from testtable").Scan(&n_tables)
-   if err != nil {
-      log.Fatal(err)
-   }
-   println ("count of tables" , n_tables)
-
-   println("closing connection")
-   db.Close()
-	
-	
-	port := os.Getenv("PORT")
-  	if port == "" {
-        	port = "8080"
-	}	
-	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", port), nil))
-}
