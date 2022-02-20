@@ -51,14 +51,18 @@ import (
 	_ "github.com/denisenkom/go-mssqldb"
 )
 
-var (
-	server   = "10.132.0.431"
+
+	
+
+
+func main() {
+	
+	server   = "10.132.0.43"
 	port     = 1433
 	user     = "testuser"
 	password = "test1231"
-)
-
-func main() {
+	
+	
 	connString := fmt.Sprintf("server=%s;user id=%s;password=%s;port=%d",
 		server, user, password, port)
 
