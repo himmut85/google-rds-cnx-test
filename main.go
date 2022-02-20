@@ -55,7 +55,7 @@ import (
 
 func main() {
 	
-	server   := "10.132.0.431"
+	server   := "10.132.0.4312"
 	port     := "1433"
 	user     := "testuser"
 	password := "test123"
