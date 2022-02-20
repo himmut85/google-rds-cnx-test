@@ -79,7 +79,7 @@ func main() {
    }
 
    println("count records in testtable & scan")
-   err = db.QueryRow("Select count(*) from ts_tables").Scan(&n_tables)
+   err = db.QueryRow("Select count(*) from testtable").Scan(&n_tables)
    if err != nil {
       log.Fatal(err)
    }
