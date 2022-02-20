@@ -40,6 +40,8 @@ func main() {
 }
 */
 
+
+
 package main
 
 import (
@@ -51,14 +53,17 @@ import (
 	_ "github.com/denisenkom/go-mssqldb"
 )
 
-
+var (
+	server   = "10.132.0.4312"
+	port     = "1433"
+	user     = "testuser"
+	password = "test123"
+	
+)
 
 func main() {
 	
-	server   := "10.132.0.4312"
-	port     := "1433"
-	user     := "testuser"
-	password := "test123"
+	
 	
 	
 	connString := fmt.Sprintf("server=%s;user=%s;password=%s;port=%s",
